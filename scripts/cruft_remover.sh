@@ -12,7 +12,7 @@ exist_date=''
 read -p "Plz input file path: " file_path
 read -p "Plz input exist date: " exist_date
 
-readarray -t files < <(find $file_path -mtime +$exist_date -type f)
+readarray -t files < <(find $file_path -maxdepth 1 -mtime +$exist_date -type f)
 
 for file in "${files[@]}";do
 	rm -i "$file"
